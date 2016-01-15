@@ -13,6 +13,11 @@ from operator import itemgetter
 import os.path
 import Tkinter as tk
 
+#  ArtWork class includes methods for finding the average RGB value of an image,
+#  returning a list of similar artworks, writing an artwork and it's data to a csv file
+#  and a static method for returning all the artist's names.
+
+
 class ArtWork:
     
     def __init__(self,name,title, img,filename):
@@ -115,18 +120,20 @@ class ArtWork:
                     for x in range(8):
                         source.append(float(row[attr])/float(row[4]))
                         attr += 1 
+        
         with open(statcsv, 'rt') as f:
             reader2 =csv.reader(f, delimiter = ',')          
             artworks = []
+            
             for row in reader2:
                 if row[1] != artwork:
                     work = []
                     work.append(row[2])
                     rValue,gValue,bValue =eval(row[3])
                     rValue,gValue,bValue= float(rValue/20.0),float(gValue/20.0),float(bValue/20.0)
-                   
                     attr = 5
                     totalDist =0
+                    
                     for x in range(8):
                         totalDist += abs(source[x+1]-(float(row[attr])/float(row[4])))
                         attr += 1
