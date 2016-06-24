@@ -167,11 +167,11 @@
                 <p>Art Connector categorizes artwork by the emotions that they evoke.
                  The emotions used are based on Robert Plutchik's wheel of emotion, 
                  which diagrams eight basic emotions and their opposites
-				 (joy-sadness, trust-disgust, fear-anger and surprise-anticipation).
-				 Plutchik theorized that the spectrum of emotions can be diagramed, much like a color wheel.
-				 These base emotions would mix with each other and form other more nuanced emotions.
-				 Art Connector's categorization is a result of the online communities voting.
-				 Connections are formed through similar scoring on the emotion wheel.
+		 (joy-sadness, trust-disgust, fear-anger and surprise-anticipation).
+		 Plutchik theorized that the spectrum of emotions can be diagramed, much like a color wheel.
+		 These base emotions would mix with each other and form other more nuanced emotions.
+		 Art Connector's categorization is a result of the online communities voting.
+		 Connections are formed through similar scoring on the emotion wheel.
 				</p>
 
             </div>
