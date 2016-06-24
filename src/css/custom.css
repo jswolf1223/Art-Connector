@@ -1,0 +1,625 @@
+@CHARSET "ISO-8859-1";
+
+body.wait, body.wait * {
+	cursor: wait !important;
+}
+
+/*--------------------------Intro Styles-----------------------*/
+#hero {
+	height: 100vh;
+}
+/*--------------------------End intro Styles-------------------*/
+
+/*-------------------------Font styles-------------------------*/
+.orange {
+	color: #f36b2b;
+}
+
+.black {
+	font-style: italic;
+}
+
+.mild {
+	color: black;
+	font-size: .8em;
+}
+
+.med {
+	color: black;
+}
+
+.strong {
+	color: black;
+	font-size: 1.2em;
+}
+/* End Font Styles */
+
+/*---------------Work Section and Emotion Overlays----------------*/
+.emointro {
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 0;
+	font: 15px/24px "raleway-heavy", sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	color: black;
+	margin-bottom: 18px;
+}
+
+.ontop {
+	display: none;
+}
+
+.joy {
+	background: rgb(225, 225, 0);
+}
+
+.trust {
+	background: rgb(0, 254, 48);
+}
+
+.fear {
+	background: rgb(0, 164, 65);
+}
+
+.surprise {
+	background: rgb(0, 125, 255);
+}
+
+.sadness {
+	background: rgb(0, 29, 209);
+}
+
+.disgust {
+	background: rgb(210, 0, 164);
+}
+
+.anger {
+	background: rgb(255, 0, 0);
+}
+
+.anticipation {
+	background: rgb(255, 102, 0)
+}
+
+#emote div {
+	cursor: pointer;
+	cursor: hand;
+}
+
+#joy {
+	background: rgb(225, 225, 0);
+}
+
+#trust {
+	background: rgb(0, 254, 48);
+}
+
+#fear {
+	background: rgb(0, 164, 65);
+}
+
+#surprise {
+	background: rgb(0, 125, 255);
+}
+
+#sadness {
+	background: rgb(0, 29, 209);
+}
+
+#disgust {
+	background: rgb(210, 0, 164);
+}
+
+#anger {
+	background: rgb(255, 0, 0);
+}
+
+#anticipation {
+	background: rgb(255, 102, 0)
+}
+
+/* End Emotion Overlay */
+
+/* Voting Styles */
+.submit-vote {
+	margin-top: 3vh;
+	height: 45px;
+	font-size: medium;
+	background-color: black;
+}
+
+#artpic {
+	margin-top: 25px;
+	margin-bottom: 25px
+}
+
+#submitVote2 {
+	width: 100%;
+	padding-bottom: 0px;
+}
+
+#voteContain {
+	position: fixed;
+	overflow-y: scroll;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .75);
+	z-index: 2000;
+	top: 0;
+	left: 0;
+}
+
+#overpic {
+	margin: 18px;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+#voteForm {
+	margin-right: 18px;
+	margin-top: 18px;
+	width: 30%;
+}
+
+#voteForm h1 {
+	color: white;
+}
+
+#voteForm>input {
+	width: 100%
+}
+
+#x {
+	position: absolute;
+	right: 5%;
+	top: 2.5%;
+	color: black;
+	background-color: rgba(255, 255, 255, .6);
+	font: "raleway-heavy", sans-serif;
+	padding: 0px 7px 0px 7px;
+	cursor: pointer;
+}
+
+#artpic {
+	width: 100%;
+	height: auto;
+}
+/*-----------------End Voting Styles----------------*/
+
+/*-----------------Main App Styles------------------*/
+.centered>h1, .centered>h2 {
+	text-align: center;
+	text-transform: capitalize;
+}
+
+.wide h1 {
+	position: relative;
+	width: 120%;
+	left: -10%;
+}
+
+#levels>h1 {
+	margin: 0;
+	color: white;
+	font-size: large;
+	padding-left: 2%;
+	height: 47.1px;
+	text-transform: capitalize;
+	line-height: 1.2;
+}
+
+#ranker {
+	padding-right: 36px;
+}
+
+#ranker h1 {
+	margin-bottom: 0;
+	font-size: large;
+	line-height: 1;
+}
+
+#dominant div {
+	height: 60px;
+}
+
+#colors {
+	height: 200px;
+	width: 100%;
+	position: absolute;
+	top: 300px;
+	padding-right: 5vw;
+}
+
+#findSimColors {
+	position: absolute;
+	left: 0;
+	top: 155px;
+	width: 80%;
+}
+
+#loading {
+	position: absolute;
+	left: 40%;
+	top: 25%;
+	color: white;
+	visibility: hidden;
+}
+
+#emotions {
+	margin-bottom: 2 px;
+	font-size: 25px;
+}
+
+#message {
+	text-align: center;
+	font-size: 25px;
+	color: white;
+}
+
+#ent {
+	font-size: 2.8em;
+}
+
+#app {
+	text-align: center;
+	height: 560px;
+}
+
+#main {
+	display: none;
+	background-color: gray;
+	padding-top: 100px;
+	background-color: gray;
+	border-top: solid 20px black;
+}
+
+#mainpic {
+	position: absolute;
+	bottom: 100px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	min-width: 60%;
+	max-width: 100%;
+	max-height: 520px;
+	border: 20px;
+	border: 10px solid #E55815;
+}
+
+#maininfo {
+	position: absolute;
+	bottom: 15px;
+	left: 0;
+	right: 0;
+}
+
+#maininfo>h2 {
+	margin-top: 0%;
+}
+
+#maininfo>h1 {
+	margin: 0%;
+}
+
+#arrow {
+	padding: 0;
+}
+
+#arrow>img {
+	width: 100%;
+	height: 376.67px;
+}
+
+#arrowh {
+	width: 100%;
+}
+
+#wheel-container, #wheel {
+	padding: 0;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+#tester-container {
+	width: 100vw;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+#tester {
+	width: 4000px;
+}
+
+#tester div {
+	cursor: pointer;
+	cursor: hand;
+}
+
+/*   center thumbs  */
+.thumbs {
+	position: relative;
+	width: 20vw;
+	height: 20vw;
+	overflow: hidden;
+	float: left;
+}
+
+.thumbs img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.thumbs img.portrait {
+	width: 100%;
+	height: auto;
+}
+
+#enlarge {
+	max-width: 1200px;
+}
+/*End Center Thumbs*/
+
+/*---------------About Emotions Style----------------*/
+.men {
+	height: auto;
+	margin-top: 25px;
+	padding-left: 0px;
+}
+
+.mob-whole div {
+	padding-left: 0;
+	padding-right: 0;
+}
+/*---------------End About Emotions Style------------*/
+
+/*----------------Range Slider Style-----------------*/
+input[type=range] {
+	-webkit-appearance: none;
+	width: 100%;
+}
+
+::-webkit-scrollbar {
+	height: auto;
+}
+
+input[type=range]:focus {
+	outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track, ::-webkit-scrollbar-track
+	{
+	background: #f26522;
+	border-radius: 1.3px;
+	border: 0.2px solid #010101;
+}
+
+input[type=range]::-webkit-slider-thumb, ::-webkit-scrollbar-thumb {
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 23px;
+	width: 36px;
+	border-radius: 0px;
+	background: #ffffff;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -7.5px;
+}
+
+:-webkit-scrollbar-thumb {
+	width: 20px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #f3763a;
+}
+
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 8.4px;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background: #f26522;
+	border-radius: 1.3px;
+	border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-thumb {
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 23px;
+	width: 36px;
+	border-radius: 0px;
+	background: #ffffff;
+	cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 8.4px;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+	background: #ed560e;
+	border: 0.2px solid #010101;
+	border-radius: 2.6px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-fill-upper {
+	background: #f26522;
+	border: 0.2px solid #010101;
+	border-radius: 2.6px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-thumb {
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 23px;
+	width: 36px;
+	border-radius: 0px;
+	background: #ffffff;
+	cursor: pointer;
+	height: 8.4px;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: #f26522;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+	background: #f3763a;
+}
+
+/*-----------------End Range Slider Style------------------*/
+
+/*-------------------Media Queries-------------------------*/
+@media screen and (max-width:900px) {
+	.thumbs {
+		width: 33vw;
+		height: 33vw;
+	}
+	#voteForm {
+		width: 40vw;
+		left: 55vw;
+		right: 5 vw;
+	}
+}
+
+@media screen and (max-width:600px) {
+	.thumbs {
+		width: 50vw;
+		height: 50vw;
+	}
+	#voteForm {
+		width: 100vw;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+}
+
+@media screen and (max-width:420px) {
+	#hero {
+		padding-top: 160px;
+		background-image: url(../images/portfolio/emotions_plutchik-mobile.jpg);
+		background-size: 100%;
+		width: 100%;
+	}
+	.ontop {
+		display: inherit;
+		position: absolute;
+		z-index: 100;
+		color: white;
+		margin-left: 10%;
+		font: 15/21 "raleway-heavy", sans-serif
+	}
+	.portfolio-item-meta {
+		display: none;
+	}
+	
+	#arrow {
+		display: none;
+	}
+	#levels {
+		display: absolute;
+		top: 380px;
+	}
+	#levels>h1 {
+		height: 30px;
+	}
+	#main {
+		padding-bottom: 780px;
+		padding-top: 375px;
+	}
+	#wheel-container {
+		top: 400px;
+	}
+	#colors {
+		padding-right: 0;
+		width: 100%;
+		position: absolute;
+		top: 775px;
+		height: 400px
+	}
+	#findSimColors {
+		width: 100%;
+	}
+	#tester-container {
+		position: relative;
+		top: -675px;
+	}
+	#app {
+		height: inherit;
+	}
+	#mainpic {
+		position: absolute;
+		bottom: -60px;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: auto;
+		max-height: 325px;
+	}
+	#maininfo {
+		position: absolute;
+		top: 60px;
+		width: 100vw;
+	}
+	#maininfo>h2 {
+		font-size: 5.8vw
+	}
+	#maininfo>h1 {
+		font-size: 6.5vw
+	}
+	#vote {
+		position: absolute;
+		top: -175px;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	#submitVote2 {
+		margin-bottom: 55px;
+	}
+	#wheel, #wheel-container {
+		width: 90%;
+	}
+	#ranker {
+		padding: 0;
+	}
+	.wide h1 {
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+	.men {
+		height: 150px;
+		margin: 0 auto
+	}
+}
+
+@media screen and (max-width:360px) {
+	#wheel-container, #wheel {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width:330px) {
+	#colors {
+		top: 745px
+	}
+}
