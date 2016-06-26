@@ -31,7 +31,7 @@
    
     <!-- Script
    =================================================== -->
-    <script src="js/modernizr.js"></script>
+    <script src="js/dep/modernizr.js"></script>
 
     <!-- Favicons
 	=================================================== -->
@@ -692,18 +692,18 @@
         <script>
             window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
         </script>
-        <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-        <script src="js/jquery.flexslider.js"></script>
-        <script src="js/jquery.fittext.js"></script>
-        <script src="js/backstretch.js"></script>
-        <script src="js/waypoints.js"></script>
+        <script type="text/javascript" src="js/dep/jquery-migrate-1.2.1.min.js"></script>
+        <script src="js/dep/jquery.flexslider.js"></script>
+        <script src="js/dep/jquery.fittext.js"></script>
+        <script src="js/dep/backstretch.js"></script>
+        <script src="js/dep/waypoints.js"></script>
         <script src="js/main.js"></script>
        
        
         <!--  Art-Connector customised script and dependencies.
     ================================================ -->
 		<script src="js/custom.js"></script>      
-		<script src="js/color-thief.js"></script>         
+		<script src="js/dep/color-thief.js"></script>         
 		<script src="js/average-rgb.js"></script>         
 		<script src="js/slider-change.js"></script>         
 		<script src="js/get-voter.js"></script>         
