@@ -11,7 +11,7 @@ $(document)
              */
             $('#findSimColors').live('click', function(e) {
                 e.preventDefault();
-
+                
                 $.ajax({
                     url: 'findclosecolor.php',
                     type: 'POST',
@@ -51,6 +51,7 @@ $(document)
                     'scrollTop': $('#mainpic').offset().top - 50
                 }, 800, 'swing');
                 getColors();
+                
             });
 
            
@@ -72,7 +73,7 @@ $(document)
              */
             $('#submitVote2').live('click', function(e) {
                 e.preventDefault();
-                var add = $('#maininfo > h1').text();
+                var add = $('#maininfo > h1').text().slice(1,-1);
                 var form = $('#voteForm').serializeArray()
                 form.push({
                     name: 'title',
@@ -100,7 +101,7 @@ $(document)
              * Closes voteContain div when x is clicked.
              */
             $('#x').live('click', function(e) {
-                $('.voteContain').remove();
+                $('#voteContain').remove();
             });
             
           
@@ -126,7 +127,7 @@ $(document)
                         getColors();
                         for (x = 1; x < 11; x++) {
                             $('#tester').append('<div class="thumbs" > <img id=' + x +
-                                ' class="img-responsive"' + stuff[x]['ratio'] + '" src="' +
+                                ' class="img-responsive ' + stuff[x]['ratio'] + '" src="' +
                                 stuff[x]['imgpath'] + '">');
                         }
 
@@ -141,6 +142,37 @@ $(document)
             });
             
            
+            $('#findDist').live('click', function(e) {
+
+                e.preventDefault();
+                $('body').addClass('wait');
+                $.ajax({
+                    url: "euclid-diff.php",
+                    type: "POST",
+                    data: {
+                        'imgpath': stuff[0]['imgpath'],
+                    },
+                    success: function(data) {
+                        stuff = $.parseJSON(data);
+                        $('#tester').empty();
+                        getColors();
+                        for (x = 1; x < 11; x++) {
+                            $('#tester').append('<div class="thumbs" > <img id=' + x +
+                                ' class="img-responsive ' + stuff[x]['ratio'] + '" src="' +
+                                stuff[x]['imgpath'] + '">');
+                        }
+
+                        $('html, body').animate({
+                            'scrollTop': $('#tester-container').offset().top - 50
+                        }, 600, 'swing');
+                    }
+                })
+                setTimeout(function() {
+                    $('body').removeClass('wait');
+                }, 3000);
+            });
+            
+            
             /*
              *  Makes Ajax call to getemotion.php. On success returns 11 images with data on emotional ranking,
              *  dominant color, and palette. Displays images and data in the main app.
@@ -162,7 +194,8 @@ $(document)
                         $('#arrow').html('<img src="images/arrow.svg">')
                         $('#vote').html('<button class="submit full-width submit-vote" id="submitVote" ' +
                             'type="submit">Vote</button><br><button class="submit full-width submit-vote"' +
-                            'id="findSim" type="submit">Find Similar Art</button>');
+                            'id="findSim" type="submit">Match by Emotion Wheel </button><br><button class="submit full-width submit-vote"' +
+                            'id="findDist" type="submit">Match by Distance </button>');
                         mainInfo(stuff[0]['firstname'], stuff[0]['lastname'], stuff[0]['title']);
                         $('#levels').empty();
                         level(stuff[0]);
@@ -230,6 +263,8 @@ $(document)
                     var colorThief = new ColorThief();		   
                     var palette = JSON.stringify(colorThief.getPalette(myImage, 6));  //  Finds six main rgb values in image. 
                     var rgb = colorThief.getColor(myImage);							  //  Finds dominant rgb value in image.
+                    var avgRgb = getAverageColourAsRGB(myImage);
+                    var avg = ("" + avgRgb.r + "," + avgRgb.g + "," + avgRgb.b + "");
                     var ratio = "";
                     if (myImage.width < myImage.height)        						  //  Determines aspect ratio of image.
                         ratio = "portrait";
@@ -237,10 +272,11 @@ $(document)
                     formData.append('rgb', rgb);
                     formData.append('ratio', ratio);
                     formData.append('palette', palette);
+                    formData.append('avg', avg);
                     $('body').addClass('wait');
                     $
                         .ajax({
-                            url: "load_image.php",  			 // Stores formdata in database.
+                            url: "load-image.php",  			 // Stores formdata in database.
                             type: "POST",
                             data: formData,
 
@@ -248,6 +284,7 @@ $(document)
                             cache: false,
                             processData: false,
                             success: function(data) {
+                            	alert(data);
                                 $('#main').show();
                                 $('#loading').hide();
                                 if (!window.stuff) {            //  Creates stuff array if it exists
@@ -270,10 +307,11 @@ $(document)
                                         '>' + value.id + ': ' + value.value + '</h1>');
                                 });
                                 $('#message').html(stuff[0].title + 'loaded successfully');
-                                $('#vote').html('<button class="submit full-width submit-vote" id="submitVote"' +
-                                    'type="submit">Vote</button> <br> <button class="submit full-width submit-vote"' +
-                                    'id="findSim" type="submit">Find Similar Art</button>');
-                                $('#app').html('<img id="mainpic" src=""> <div id="maininfo" class="centered"></div>')
+                                $('#vote').html('<button class="submit full-width submit-vote" id="submitVote" ' +
+                                        'type="submit">Vote</button><br><button class="submit full-width submit-vote"' +
+                                        'id="findSim" type="submit">Match by Emotion Wheel </button><br><button class="submit full-width submit-vote"' +
+                                        'id="findDist" type="submit">Match by Distance </button>');
+                                 $('#app').html('<img id="mainpic" src=""> <div id="maininfo" class="centered"></div>')
                                 $('#artpic').attr('src', 'images/noimg.png');
                                 $('#mainpic').attr('src', stuff[0].imgpath);
                                 $('#arrow').html('<img alt="" src="images/arrow.svg">');
@@ -398,88 +436,21 @@ $(document)
                     'id="wheel-container"><img style="position:absolute;top:0px;left:0px"' +
                     'id="wheel" src="images/circlegogradient.svg" style="padding:0">');
 
-                var x = $('#wheel').width() / 2 + ((stuff[0]['x'] / 9) * 100);						// Calculates horizontal position of dot on emotion wheel.
-                var y = $('#wheel').width() / 2 + ((stuff[0]['y'] / -9) * 100);						// Calculates vertical position of dot on emotion wheel.
+                var x = $('#wheel').width() / 2 + ((stuff[0]['x'] / 9) * 100)-12;						// Calculates horizontal position of dot on emotion wheel.
+                var y = $('#wheel').width() / 2 + ((stuff[0]['y'] / -9) * 100)-12;						// Calculates vertical position of dot on emotion wheel.
                 $('#wheel-container').append('<img src="images/circle.svg" style="height:25px;' +   // Places circle on central emotion on the wheel.
                     'position:absolute;left:' + x + 'px;width:px;top:' + y + 'px;">');
                 $('#dominant').append('<div id="colors"><h1> Dominant Color:</h1>' +				// Displays dominant color.
                     '<div style="background-color:rgb(' + stuff[0]['rgb'] + ')"></div>' +
                     '<h1>Palette:</h1>');
+                
                 for (var x = 0; x < 6; x++) {														// Displays palette.
                     $('#colors').append('<div style=background-color:rgb(' + palette[x] + ');' +    
                         'width:16.65%;float:left;height:60px;></div>');
                 }
+                $('#colors').append( '<div id="average"><h1>Average Color:</h1><div style="background-color:rgb(' + stuff[0]['rgbavg'] + ')"></div></div>');
                 $('#dominant').append('</div>');
 
                 $('#colors').append('<button class="submit submit-vote" id="findSimColors" type="submit">Match By Color</button>');
             }
-
-            /*
-             * Creates range input elements for voteForm, and submitVote forms.
-             */
-            function getEmo(element) {
-
-                element.append(
-                    $("<h1>").text("Joy."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'joy',
-                        min: '0',
-                        max: '6',
-                        id: 'Joy',
-                    }), $("<h1>").text("Trust."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'trust',
-                        min: '0',
-                        max: '6',
-                        id: 'Trust',
-                    }), $("<h1>").text("Fear."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'fear',
-                        min: '0',
-                        max: '6',
-                        id: 'Fear',
-                    }), $("<h1>").text("Surprise."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'surprise',
-                        min: '0',
-                        max: '6',
-                        id: 'Surprise',
-                    }), $("<h1>").text("Sadness."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'sadness',
-                        min: '0',
-                        max: '6',
-                        id: 'Sadness',
-                    }), $("<h1>").text("Disgust."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'disgust',
-                        min: '0',
-                        max: '6',
-                        id: 'Disgust',
-                    }), $("<h1>").text("Anger."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'anger',
-                        min: '0',
-                        max: '6',
-                        id: 'Anger'
-                    }), $("<h1>").text("Anticipation."),
-                    $("<input>", {
-                        type: 'range',
-                        name: 'anticipation',
-                        min: '0',
-                        max: '6',
-                        id: 'Anticipation',
-
-                    })
-
-                );
-            }
-
         });
