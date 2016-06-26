@@ -1,4 +1,10 @@
 <?php
+/*
+* Performs 2 queries.  
+* 1. fetches data for user selected artwork.
+* 2. Performs modified euclidean difference on emotions of all rows in database.
+* Return data for for 11 least distant rows in ascending order.
+*/
 include 'configdb.php';
 $sql = new mysqli ( $servername, $username, $password, $database );
 if ($sql->connect_error) {
