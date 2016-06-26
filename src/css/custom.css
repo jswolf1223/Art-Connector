@@ -138,6 +138,9 @@ body.wait, body.wait * {
 	width: 100%;
 	padding-bottom: 0px;
 }
+.submit{
+	font-size: 80%;
+}
 
 #voteContain {
 	position: fixed;
@@ -155,7 +158,10 @@ body.wait, body.wait * {
 	max-height: 100%;
 	max-width: 100%;
 }
-
+#contact-form{
+	padding-left:0;
+	padding-right:0;
+}
 #voteForm {
 	margin-right: 18px;
 	margin-top: 18px;
@@ -171,7 +177,7 @@ body.wait, body.wait * {
 }
 
 #x {
-	position: absolute;
+	position: fixed;
 	right: 5%;
 	top: 2.5%;
 	color: black;
@@ -184,6 +190,7 @@ body.wait, body.wait * {
 #artpic {
 	width: 100%;
 	height: auto;
+	padding-right: 0;
 }
 /*-----------------End Voting Styles----------------*/
 
@@ -198,7 +205,10 @@ body.wait, body.wait * {
 	width: 120%;
 	left: -10%;
 }
-
+#levels-container{
+	top:-55px;
+	padding-right: 0;
+}
 #levels>h1 {
 	margin: 0;
 	color: white;
@@ -211,6 +221,7 @@ body.wait, body.wait * {
 
 #ranker {
 	padding-right: 36px;
+	top: -50px;
 }
 
 #ranker h1 {
@@ -227,8 +238,13 @@ body.wait, body.wait * {
 	height: 200px;
 	width: 100%;
 	position: absolute;
-	top: 300px;
+	top: 345px;
 	padding-right: 5vw;
+}
+
+#average{
+	position: relative;
+    top: -233px;
 }
 
 #findSimColors {
@@ -249,6 +265,9 @@ body.wait, body.wait * {
 #emotions {
 	margin-bottom: 2 px;
 	font-size: 25px;
+	padding-left: 0;
+	padding-right: 0;
+	/* margin-right: 0; */
 }
 
 #message {
@@ -258,7 +277,7 @@ body.wait, body.wait * {
 }
 
 #ent {
-	font-size: 2.8em;
+	font-size: 2.4em !important;
 }
 
 #app {
@@ -277,14 +296,12 @@ body.wait, body.wait * {
 #mainpic {
 	position: absolute;
 	bottom: 100px;
-	left: 0;
 	right: 0;
 	margin: auto;
+	left: 0;
 	min-width: 60%;
-	max-width: 100%;
+	max-width: 95%;
 	max-height: 520px;
-	border: 20px;
-	border: 10px solid #E55815;
 }
 
 #maininfo {
@@ -296,10 +313,12 @@ body.wait, body.wait * {
 
 #maininfo>h2 {
 	margin-top: 0%;
+	font-size: larger;
 }
 
 #maininfo>h1 {
 	margin: 0%;
+	font-size: x-large;
 }
 
 #arrow {
@@ -497,6 +516,17 @@ input[type=range]:focus::-ms-fill-upper {
 		left: 55vw;
 		right: 5 vw;
 	}
+	
+	
+}
+@media screen and (max-width:670px) {
+#wheel-container,#wheel {
+		width: 200%;
+		position: relative;
+		top: -30px;
+		left:-50%;
+	}
+	
 }
 
 @media screen and (max-width:600px) {
@@ -510,9 +540,11 @@ input[type=range]:focus::-ms-fill-upper {
 		right: 0;
 		margin: auto;
 	}
+	
 }
 
-@media screen and (max-width:420px) {
+@media screen and (max-width: 420px) {
+	
 	#hero {
 		padding-top: 160px;
 		background-image: url(../images/portfolio/emotions_plutchik-mobile.jpg);
@@ -543,51 +575,53 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	#main {
 		padding-bottom: 780px;
-		padding-top: 375px;
+		padding-top: 550px;
 	}
 	#wheel-container {
 		top: 400px;
+		/* height: 100vw !important; */
 	}
 	#colors {
 		padding-right: 0;
 		width: 100%;
 		position: absolute;
-		top: 775px;
-		height: 400px
+		top: 810px;
+		height: 400px;
 	}
 	#findSimColors {
 		width: 100%;
 	}
 	#tester-container {
 		position: relative;
-		top: -675px;
+		top: -870px;
 	}
 	#app {
 		height: inherit;
 	}
 	#mainpic {
 		position: absolute;
-		bottom: -60px;
+		bottom: -10px;
 		left: 0;
 		right: 0;
 		margin: auto;
-		width: auto;
-		max-height: 325px;
+		max-width: 100%;
+		max-height: 400px;
+		height: auto;
 	}
 	#maininfo {
 		position: absolute;
-		top: 60px;
+		top: 10px;
 		width: 100vw;
 	}
 	#maininfo>h2 {
-		font-size: 5.8vw
+		font-size: 4.5vw;
 	}
 	#maininfo>h1 {
-		font-size: 6.5vw
+		font-size: 5vw;
 	}
 	#vote {
 		position: absolute;
-		top: -175px;
+		top: -320px;
 		left: 0;
 		right: 0;
 		margin: auto;
@@ -596,10 +630,15 @@ input[type=range]:focus::-ms-fill-upper {
 		margin-bottom: 55px;
 	}
 	#wheel, #wheel-container {
-		width: 90%;
+		left:0%;
+		width: 95%;
+		position: absolute;
+		top: 350px;
+		
 	}
 	#ranker {
 		padding: 0;
+		top: 0px;
 	}
 	.wide h1 {
 		position: relative;
@@ -612,9 +651,10 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width: 360px) {
 	#wheel-container, #wheel {
 		width: 100%;
+		/* top: -40px; */
 	}
 }
 

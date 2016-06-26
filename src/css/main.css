@@ -1726,6 +1726,7 @@ hr {
 }
 #contact h1 {
 	color: white;
+	font-size: inherit;
 }
 
 /* contact form */
