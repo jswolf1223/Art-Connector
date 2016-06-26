@@ -1,5 +1,5 @@
-/**
- * 
+/*
+ * Changes text above range sliders as range value is changed.
  */
 $(document).ready(function () {
      $(function () {
