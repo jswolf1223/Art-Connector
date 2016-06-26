@@ -167,11 +167,11 @@
                 <p>Art Connector categorizes artwork by the emotions that they evoke.
                  The emotions used are based on Robert Plutchik's wheel of emotion, 
                  which diagrams eight basic emotions and their opposites
-		 (joy-sadness, trust-disgust, fear-anger and surprise-anticipation).
-		 Plutchik theorized that the spectrum of emotions can be diagramed, much like a color wheel.
-		 These base emotions would mix with each other and form other more nuanced emotions.
-		 Art Connector's categorization is a result of the online communities voting.
-		 Connections are formed through similar scoring on the emotion wheel.
+				 (joy-sadness, trust-disgust, fear-anger and surprise-anticipation).
+				 Plutchik theorized that the spectrum of emotions can be diagramed, much like a color wheel.
+				 These base emotions would mix with each other and form other more nuanced emotions.
+				 Art Connector's categorization is a result of the online communities voting.
+				 Connections are formed through similar scoring on the emotion wheel.
 				</p>
 
             </div>
@@ -179,13 +179,12 @@
         </div>
         <div class="twelve columns" id="main">
             <div id="levels-container" class="three columns">
-                <div id="levels" class="nine columns"></div>
-                <div id="arrow" class="three columns"></div>
+                <div id="levels" class="twelve columns"></div>
+                
                 <div id="vote" class="twelve columns"></div>
             </div>
             <div id="app" class="six columns">
-                <!-- <img id="mainpic" src="">
-				<div id="maininfo" class="centered"></div>   -->
+               
             </div>
             <div id="ranker" class="three columns">
                 <div id="dominant"></div>
@@ -705,6 +704,10 @@
     ================================================ -->
 		<script src="js/custom.js"></script>      
 		<script src="js/color-thief.js"></script>         
+		<script src="js/average-rgb.js"></script>         
+		<script src="js/slider-change.js"></script>         
+		<script src="js/get-voter.js"></script>         
+		
 </body>
 
 </html>
