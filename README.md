@@ -1,4 +1,5 @@
-#------------------  Art-Connector.  Website address: https://www.art-connector.com --------------------#
+# Art-Connector.  
+Website address: https://www.art-connector.com
 
 Artwork categorization PHP web application that uses user input emotional ratings and image processing 
 as comparison metrics.  
