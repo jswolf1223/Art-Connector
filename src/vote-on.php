@@ -10,7 +10,7 @@ include 'configdb.php';
 
 // Create connection
 $sql = new mysqli ( $servername, $username, $password, $database );
-$title =  $_POST ['title'] ;
+$title = $sql->real_escape_string ( $_POST ['title'] );
 $joy = $_POST ['joy'];
 $trust = $_POST ['trust'];
 $fear = $_POST ['fear'];
