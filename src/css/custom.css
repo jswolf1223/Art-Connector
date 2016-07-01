@@ -209,7 +209,7 @@ body.wait, body.wait * {
 	top:-55px;
 	padding-right: 0;
 }
-#levels>h1 {
+#levels h1 {
 	margin: 0;
 	color: white;
 	font-size: large;
@@ -229,17 +229,19 @@ body.wait, body.wait * {
 	font-size: large;
 	line-height: 1;
 }
-
+#dominant{
+	position:relative;
+}
 #dominant div {
 	height: 60px;
+	max-width: 450px;
 }
 
 #colors {
 	height: 200px;
 	width: 100%;
 	position: absolute;
-	top: 345px;
-	padding-right: 5vw;
+	top: 360px;
 }
 
 #average{
@@ -251,7 +253,7 @@ body.wait, body.wait * {
 	position: absolute;
 	left: 0;
 	top: 155px;
-	width: 80%;
+	width: 100%;
 }
 
 #loading {
@@ -333,7 +335,11 @@ body.wait, body.wait * {
 #arrowh {
 	width: 100%;
 }
-
+#wheel{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
 #wheel-container, #wheel {
 	padding: 0;
 	width: 100%;
@@ -341,7 +347,15 @@ body.wait, body.wait * {
 	right: 0;
 	margin: auto;
 }
-
+#circle{
+	position:absolute;
+	height:25px;
+}
+#palette{
+	width:16.65%;
+	height:60px;
+	float:left;
+}
 #tester-container {
 	width: 100vw;
 	overflow-x: scroll;
@@ -349,7 +363,7 @@ body.wait, body.wait * {
 }
 
 #tester {
-	width: 4000px;
+	min-width: 5000px;
 }
 
 #tester div {
@@ -579,7 +593,7 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	#wheel-container {
 		top: 400px;
-		/* height: 100vw !important; */
+		
 	}
 	#colors {
 		padding-right: 0;
@@ -600,17 +614,17 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	#mainpic {
 		position: absolute;
-		bottom: -10px;
+		bottom: 10px;
 		left: 0;
 		right: 0;
 		margin: auto;
 		max-width: 100%;
-		max-height: 400px;
+		max-height: 380px;
 		height: auto;
 	}
 	#maininfo {
 		position: absolute;
-		top: 10px;
+		top: -10px;
 		width: 100vw;
 	}
 	#maininfo>h2 {
@@ -636,6 +650,8 @@ input[type=range]:focus::-ms-fill-upper {
 		top: 350px;
 		
 	}
+	
+	#wheel{top:0;}
 	#ranker {
 		padding: 0;
 		top: 0px;
@@ -652,14 +668,105 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 @media screen and (max-width: 360px) {
-	#wheel-container, #wheel {
+	#wheel-container {
 		width: 100%;
 		/* top: -40px; */
 	}
+	
 }
 
 @media screen and (max-width:330px) {
 	#colors {
 		top: 745px
 	}
+	
+}
+@media screen and (min-width:100px) {
+	
+	
+}
+@media screen and (min-width: 1350px) {
+	#wheel,#wheel-container {
+		width: 300px;
+		top: -100px;
+	}
+	#main{
+	padding-top: 280px;
+	}
+	#mainpic{
+	min-width: 70%;
+	max-height:730px;
+	}
+	.submit{
+	font-size:larger;
+	}
+	#levels-container{
+	bottom: 195px;
+	top: inherit;
+	}
+	#levels h1{
+	height: 60px;
+	position: relative;
+	font-size: x-large;
+	}
+	#colors{
+	top: 330px;
+	}
+	#tester-container{
+	top:-120px
+	}
+	#hero-slider {
+    margin: 30vh auto 30px;
+ }
+}
+@media screen and (min-width:1750px) {
+	#main{
+	padding-top: 420px;
+	height: 1230px;
+	}
+	#mainpic{
+	max-height: 1000px;
+	max-width: 70%;
+	}
+	#wheel,#wheel-container {
+		width: 385px;
+		top: -150px;
+		left: -15px;
+	}
+	.thumbs{
+	width:12vw;
+	height:12vw;
+	}
+	#levels-container{
+	bottom: 365px;
+	top: inherit;
+	}
+	#levels h1{
+	height: 80px;
+	position: relative;
+	font-size: x-large;
+	}
+	#tester-container{
+	top: -300px;
+	}
+	
+}
+@media screen and (min-width:2000px) {
+	#main{
+	padding-top: 600px;
+	height: 1430px;
+	}
+	#mainpic{
+	max-height: 1100px;
+	}
+}
+@media screen and (min-width:2200px) {
+	#main{
+	padding-top: 660px;
+	height: 1530px;
+	}
+	#mainpic{
+		/* max-height: 1125000px; */
+		max-width: 750px;
+		}
 }
