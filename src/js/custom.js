@@ -17,16 +17,15 @@ $(document)
                     type: 'POST',
                     data: {
                         'rgb': stuff[0]['rgb'],
+                        'avg': stuff[0]['rgbavg']
                     },
                     success: function(data) {
 
                         stuff = $.parseJSON(data);
                         $('#tester').empty();
-                        $('html, body').animate({
-                            'scrollTop': $('#tester').offset().top - 50
-                        }, 600, 'swing');
+                        goTo($('tester'));
                         for (x = 1; x < 11; x++) {
-                            $('#tester').append('<div class="thumbs" > <img class="img-responsive"' +
+                            $('#tester').append('<div class="thumbs" > <img class="img-responsive ' +
                                 stuff[x]["ratio"] + '" id=' + x + ' src="' + stuff[x]['imgpath'] + '">');
 
                         }
@@ -47,9 +46,7 @@ $(document)
                     '</h1>');
                 mainInfo(stuff[0]['firstname'], stuff[0]['lastname'], stuff[0]['title']);
                 level(stuff[0]);
-                $('html, body').animate({
-                    'scrollTop': $('#mainpic').offset().top - 50
-                }, 800, 'swing');
+                goTo($('#mainpic'));
                 getColors();
                 
             });
@@ -130,10 +127,7 @@ $(document)
                                 ' class="img-responsive ' + stuff[x]['ratio'] + '" src="' +
                                 stuff[x]['imgpath'] + '">');
                         }
-
-                        $('html, body').animate({
-                            'scrollTop': $('#tester-container').offset().top - 50
-                        }, 600, 'swing');
+                        goTo($('tester-container'));
                     }
                 })
                 setTimeout(function() {
@@ -161,10 +155,7 @@ $(document)
                                 ' class="img-responsive ' + stuff[x]['ratio'] + '" src="' +
                                 stuff[x]['imgpath'] + '">');
                         }
-
-                        $('html, body').animate({
-                            'scrollTop': $('#tester-container').offset().top - 50
-                        }, 600, 'swing');
+                        goTo($('#tester-container'));
                     }
                 })
                 setTimeout(function() {
@@ -201,9 +192,7 @@ $(document)
                         level(stuff[0]);
                         $('#tester').empty();
                         getColors();
-                        $('html, body').animate({
-                            'scrollTop': $('#mainpic').offset().top - 50
-                        }, 800, 'swing');
+                        goTo($('#mainpic'));
                         for (x = 1; x < 11; x++) {
                             $('#tester').append('<div class="thumbs" > <img id=' + x + ' class="img-responsive ' +
                                 stuff[x]['ratio'] + '" src="' + stuff[x]['imgpath'] + '">');
@@ -284,7 +273,7 @@ $(document)
                             cache: false,
                             processData: false,
                             success: function(data) {
-                            	alert(data);
+                            	
                                 $('#main').show();
                                 $('#loading').hide();
                                 if (!window.stuff) {            //  Creates stuff array if it exists
@@ -315,7 +304,7 @@ $(document)
                                 $('#artpic').attr('src', 'images/noimg.png');
                                 $('#mainpic').attr('src', stuff[0].imgpath);
                                 $('#arrow').html('<img alt="" src="images/arrow.svg">');
-                                $('#mainpic')[0].scrollIntoView(true);
+                                goTo($('#mainpic'));
                                 $('#maininfo').html('<h1> \"' + $('#title').val().toLowerCase() + '\"</h1>' + '<h2>' +
                                     $('#fname').val().toLowerCase() + ' ' + $('#lname').val().toLowerCase() + '</h2>');
 
@@ -432,25 +421,29 @@ $(document)
 
                 var palette = $.parseJSON(stuff[0]['palette']);
 
-                $('#dominant').html('<div style="position:relative;" class="columns twelve"' +
-                    'id="wheel-container"><img style="position:absolute;top:0px;left:0px"' +
-                    'id="wheel" src="images/circlegogradient.svg" style="padding:0">');
+                $('#dominant').html('<div class="columns twelve" id="wheel-container">' +
+                		'<img ' +
+                    'id="wheel" src="images/circlegogradient.svg">');
 
                 var x = $('#wheel').width() / 2 + ((stuff[0]['x'] / 9) * 100)-12;						// Calculates horizontal position of dot on emotion wheel.
                 var y = $('#wheel').width() / 2 + ((stuff[0]['y'] / -9) * 100)-12;						// Calculates vertical position of dot on emotion wheel.
-                $('#wheel-container').append('<img src="images/circle.svg" style="height:25px;' +   // Places circle on central emotion on the wheel.
-                    'position:absolute;left:' + x + 'px;width:px;top:' + y + 'px;">');
+                $('#wheel-container').append('<img id="circle" src="images/circle.svg" ' +   // Places circle on central emotion on the wheel.
+                    'style="left:' + x + 'px;top:' + y + 'px;">');
                 $('#dominant').append('<div id="colors"><h1> Dominant Color:</h1>' +				// Displays dominant color.
                     '<div style="background-color:rgb(' + stuff[0]['rgb'] + ')"></div>' +
                     '<h1>Palette:</h1>');
                 
                 for (var x = 0; x < 6; x++) {														// Displays palette.
-                    $('#colors').append('<div style=background-color:rgb(' + palette[x] + ');' +    
-                        'width:16.65%;float:left;height:60px;></div>');
+                    $('#colors').append('<div id="palette" style=background-color:rgb(' + palette[x] + ');></div>');
                 }
                 $('#colors').append( '<div id="average"><h1>Average Color:</h1><div style="background-color:rgb(' + stuff[0]['rgbavg'] + ')"></div></div>');
                 $('#dominant').append('</div>');
 
                 $('#colors').append('<button class="submit submit-vote" id="findSimColors" type="submit">Match By Color</button>');
+            }
+            function goTo(el){
+            	$('html, body').animate({
+                    'scrollTop': el.offset().top - 50
+                }, 800, 'swing');
             }
         });
